@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects - Mohammad Ismail</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script>
+    function toggleTheme() {
+      document.documentElement.classList.toggle('dark');
+      localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    }
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <style>
+    .transition-all {
+      transition-property: all;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 300ms;
+    }
+    .bg-gradient {
+      background: linear-gradient(135deg, #6B73FF 0%, #000DFF 100%);
+    }
+    .dark .bg-gradient {
+      background: linear-gradient(135deg, #3a41b3 0%, #000a9f 100%);
+    }
+    .project-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    .dark .project-card:hover {
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 font-sans">
+  <!-- Navigation -->
+  <nav class="bg-gradient text-white shadow-lg">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex justify-between">
+        <div class="flex space-x-4">
+          <div>
+            <a href="index.html" class="flex items-center py-5 px-2 text-white hover:text-gray-200">
+              <svg class="w-6 h-6 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+              <span class="font-bold">Portfolio</span>
+            </a>
+          </div>
+          <div class="hidden md:flex items-center space-x-1">
+            <a href="index.html" class="py-5 px-3 font-medium hover:text-gray-200 transition-all">Home</a>
+            <a href="about.html" class="py-5 px-3 font-medium hover:text-gray-200 transition-all">About</a>
+            <a href="projects.html" class="py-5 px-3 font-medium font-bold underline">Projects</a>
+            <a href="contact.html" class="py-5 px-3 font-medium hover:text-gray-200 transition-all">Contact</a>
+          </div>
+        </div>
+        <div class="flex items-center">
+          <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-white hover:bg-opacity-20 transition-all">
+            <svg id="theme-toggle-dark" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+            <svg id="theme-toggle-light" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"></path></svg>
+          </button>
+          <div class="md:hidden flex items-center">
+            <button class="mobile-menu-button p-2 focus:outline-none">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu hidden md:hidden">
+      <a href="index.html" class="block py-2 px-4 text-sm hover:bg-white hover:bg-opacity-20 transition-all">Home</a>
+      <a href="about.html" class="block py-2 px-4 text-sm hover:bg-white hover:bg-opacity-20 transition-all">About</a>
+      <a href="projects.html" class="block py-2 px-4 text-sm hover:bg-white hover:bg-opacity-20 transition-all">Projects</a>
+      <a href="contact.html" class="block py-2 px-4 text-sm hover:bg-white hover:bg-opacity-20 transition-all">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Projects Section -->
+  <section class="max-w-6xl mx-auto px-4 py-16">
+    <h1 class="text-4xl font-bold text-center mb-12">My Projects</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Project 1 -->
+      <div class="project-card bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md">
+        <div class="p-6">
+          <div class="flex items-center mb-4">
+            <i class="fas fa-utensils text-blue-500 mr-3 text-2xl"></i>
+            <h2 class="text-2xl font-bold">Restaurant Admin Panel (FYP)</h2>
+          </div>
+          <p class="text-gray-700 dark:text-gray-300 mb-4">Developed using Flutter, Node.js, SQL Workbench, and Express.js. Admin dashboard with menu and order management.</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">Flutter</span>
+            <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">Node.js</span>
+            <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">Express.js</span>
+            <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">MySQL</span>
+          </div>
+          <a href="#" class="text-blue-600 dark:text-blue-300 hover:underline font-medium">View Project →</a>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md">
+        <div class="p-6">
+          <div class="flex items-center mb-4">
+            <i class="fas fa-dumbbell text-blue-500 mr-3 text-2xl"></i>
+            <h2 class="text-2xl font-bold">Gym Management System</h2>
+          </div>
+          <p class="text-gray-700 dark:text-gray-300 mb-4">PHP and MySQL based platform to manage gym members, subscriptions, and login system.</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">PHP</span>
+            <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">MySQL</span>
+            <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">HTML/CSS</span>
+            <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">JavaScript</span>
+          </div>
+          <a href="#" class="text-blue-600 dark:text-blue-300 hover:underline font-medium">View Project →</a>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-card bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md">
+        <div class="p-6">
+          <div class="flex items-center mb-4">
+            <i class="fas fa-file-invoice text-blue-500 mr-3 text-2xl"></i>
+            <h2 class="text-2xl font-bold">Patient Billing System</h2>
+          </div>
+          <p class="text-gray-700 dark:text-gray-300 mb-4">HTML, CSS, and PHP project for managing hospital billing, reports, and insurance records.</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">HTML</span>
+            <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">CSS</span>
+            <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">PHP</span>
+            <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">MySQL</span>
+          </div>
+          <a href="#" class="text-blue-600 dark:text-blue-300 hover:underline font-medium">View Project →</a>
+        </div>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="project-card bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md">
+        <div class="p-6">
+          <div class="flex items-center mb-4">
+            <i class="fas fa-music text-blue-500 mr-3 text-2xl"></i>
+            <h2 class="text-2xl font-bold">Music Streaming App</h2>
+          </div>
+          <p class="text-gray-700 dark:text-gray-300 mb-4">Kotlin-based Android app for streaming music from online sources.</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">Kotlin</span>
+            <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">Android</span>
+            <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">Firebase</span>
+          </div>
+          <a href="#" class="text-blue-600 dark:text-blue-300 hover:underline font-medium">View Project →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 dark:bg-gray-900 text-white py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-4 md:mb-0">
+          <p>&copy; 2025 Mohammad Ismail. All rights reserved.</p>
+        </div>
+        <div class="flex space-x-6">
+          <a href="mailto:mi4154041@gmail.com" class="hover:text-gray-300 transition-all">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a href="https://github.com/MohammadIsmail11" target="_blank" class="hover:text-gray-300 transition-all">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://linkedin.com/in/mohammad-ismail-ab9894304" target="_blank" class="hover:text-gray-300 transition-all">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="tel:+923209152850" class="hover:text-gray-300 transition-all">
+            <i class="fas fa-phone"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const mobileMenuButton = document.querySelector('.mobile-menu-button');
+    const mobileMenu = document.querySelector('.mobile-menu');
+
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Update theme toggle icons based on current theme
+    function updateThemeToggle() {
+      const darkIcon = document.getElementById('theme-toggle-dark');
+      const lightIcon = document.getElementById('theme-toggle-light');
+
+      if (document.documentElement.classList.contains('dark')) {
+        darkIcon.classList.remove('hidden');
+        lightIcon.classList.add('hidden');
+      } else {
+        darkIcon.classList.add('hidden');
+        lightIcon.classList.remove('hidden');
+      }
+    }
+
+    // Initialize theme toggle
+    updateThemeToggle();
+
+    // Add event listener for theme changes
+    const observer = new MutationObserver(updateThemeToggle);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+  </script>
+</body>
+</html>

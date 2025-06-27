@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Me - Mohammad Ismail</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script>
+    function toggleTheme() {
+      document.documentElement.classList.toggle('dark');
+      localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    }
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <style>
+    .transition-all {
+      transition-property: all;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 300ms;
+    }
+    .bg-gradient {
+      background: linear-gradient(135deg, #6B73FF 0%, #000DFF 100%);
+    }
+    .dark .bg-gradient {
+      background: linear-gradient(135deg, #3a41b3 0%, #000a9f 100%);
+    }
+    .skill-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .skill-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    .dark .skill-card:hover {
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 font-sans">
+  <!-- Navigation -->
+  <nav class="bg-gradient text-white shadow-lg">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex justify-between">
+        <div class="flex space-x-4">
+          <div>
+            <a href="index.html" class="flex items-center py-5 px-2 text-white hover:text-gray-200">
+              <svg class="w-6 h-6 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+              <span class="font-bold">Portfolio</span>
+            </a>
+          </div>
+          <div class="hidden md:flex items-center space-x-1">
+            <a href="index.html" class="py-5 px-3 font-medium hover:text-gray-200 transition-all">Home</a>
+            <a href="about.html" class="py-5 px-3 font-medium font-bold underline">About</a>
+            <a href="projects.html" class="py-5 px-3 font-medium hover:text-gray-200 transition-all">Projects</a>
+            <a href="contact.html" class="py-5 px-3 font-medium hover:text-gray-200 transition-all">Contact</a>
+          </div>
+        </div>
+        <div class="flex items-center">
+          <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-white hover:bg-opacity-20 transition-all">
+            <svg id="theme-toggle-dark" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+            <svg id="theme-toggle-light" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"></path></svg>
+          </button>
+          <div class="md:hidden flex items-center">
+            <button class="mobile-menu-button p-2 focus:outline-none">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu hidden md:hidden">
+      <a href="index.html" class="block py-2 px-4 text-sm hover:bg-white hover:bg-opacity-20 transition-all">Home</a>
+      <a href="about.html" class="block py-2 px-4 text-sm hover:bg-white hover:bg-opacity-20 transition-all">About</a>
+      <a href="projects.html" class="block py-2 px-4 text-sm hover:bg-white hover:bg-opacity-20 transition-all">Projects</a>
+      <a href="contact.html" class="block py-2 px-4 text-sm hover:bg-white hover:bg-opacity-20 transition-all">Contact</a>
+    </div>
+  </nav>
+
+  <!-- About Section -->
+  <section class="max-w-6xl mx-auto px-4 py-16">
+    <div class="flex flex-col md:flex-row items-center">
+      <div class="md:w-1/2 mb-8 md:mb-0">
+        <img src="Screenshot 2025-06-27 150055.png" alt="Mohammad Ismail" class="rounded-lg shadow-lg w-full max-w-sm mx-auto">
+      </div>
+      <div class="md:w-1/2 md:pl-12">
+        <h1 class="text-4xl font-bold mb-6">About Me</h1>
+        <p class="text-lg mb-4">
+          I'm <strong>Mohammad Ismail</strong>, a final-year Software Engineering student at Riphah International University, passionate about building full-stack web applications using modern technologies. I have experience in both frontend and backend development and am always eager to learn and contribute to meaningful software projects.
+        </p>
+        <p class="text-lg mb-6">
+          My journey in programming started with simple HTML pages and has evolved to creating complex web applications using frameworks like Node.js and Express.js for the backend and various frontend technologies.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="max-w-6xl mx-auto px-4 py-16 bg-gray-100 dark:bg-gray-800">
+    <h2 class="text-3xl font-bold text-center mb-12">My Skills</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Skill 1 -->
+      <div class="skill-card bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md p-6">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-code text-blue-500 mr-3 text-2xl"></i>
+          <h3 class="text-xl font-bold">Frontend Development</h3>
+        </div>
+        <p class="text-gray-700 dark:text-gray-300">
+          Experienced in building responsive and interactive user interfaces using modern frontend technologies.
+        </p>
+        <div class="flex flex-wrap gap-2 mt-4">
+          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">HTML</span>
+          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">CSS</span>
+          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">JavaScript</span>
+          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">tailwind</span>
+        </div>
+      </div>
+
+      <!-- Skill 2 -->
+      <div class="skill-card bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md p-6">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-server text-blue-500 mr-3 text-2xl"></i>
+          <h3 class="text-xl font-bold">Backend Development</h3>
+        </div>
+        <p class="text-gray-700 dark:text-gray-300">
+          Proficient in developing server-side logic and APIs to support frontend applications and ensure seamless data flow.
+        </p>
+        <div class="flex flex-wrap gap-2 mt-4">
+          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">Node.js</span>
+          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">Express.js</span>
+          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">PHP</span>
+        </div>
+      </div>
+
+      <!-- Skill 3 -->
+      <div class="skill-card bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md p-6">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-database text-blue-500 mr-3 text-2xl"></i>
+          <h3 class="text-xl font-bold">Databases</h3>
+        </div>
+        <p class="text-gray-700 dark:text-gray-300">
+          Skilled in designing and managing databases to ensure efficient data storage and retrieval.
+        </p>
+        <div class="flex flex-wrap gap-2 mt-4">
+          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">SQL</span>
+          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">MySQL</span>
+          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">MongoDB</span>
+        </div>
+      </div>
+
+      <!-- Skill 4 -->
+      <div class="skill-card bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md p-6">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-tools text-blue-500 mr-3 text-2xl"></i>
+          <h3 class="text-xl font-bold">Tools & Technologies</h3>
+        </div>
+        <p class="text-gray-700 dark:text-gray-300">
+          Familiar with various tools and technologies that aid in the development and deployment of software applications.
+        </p>
+        <div class="flex flex-wrap gap-2 mt-4">
+          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">Git</span>
+          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">GitHub</span>
+          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">Postman</span>
+        </div>
+      </div>
+
+      <!-- Skill 5 -->
+      <div class="skill-card bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md p-6">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-mobile-alt text-blue-500 mr-3 text-2xl"></i>
+          <h3 class="text-xl font-bold">Mobile Development</h3>
+        </div>
+        <p class="text-gray-700 dark:text-gray-300">
+          Experience in developing mobile applications for Android using Kotlin.
+        </p>
+        <div class="flex flex-wrap gap-2 mt-4">
+          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">Kotlin</span>
+          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">Android</span>
+        </div>
+      </div>
+
+      
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section class="max-w-6xl mx-auto px-4 py-16">
+    <h2 class="text-3xl font-bold text-center mb-12">Education</h2>
+    <div class="flex flex-col items-center">
+      <div class="bg-white dark:bg-gray-700 rounded-lg shadow-md p-6 mb-6 w-full max-w-2xl">
+        <div class="flex items-center mb-4">
+          <div class="bg-blue-100 dark:bg-blue-900 p-3 rounded-lg mr-4">
+            <i class="fas fa-graduation-cap text-blue-600 dark:text-blue-300 text-2xl"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold">Riphah International University</h3>
+            <p class="text-gray-600 dark:text-gray-300">Bachelor of Software Engineering</p>
+          </div>
+        </div>
+        <p class="text-gray-700 dark:text-gray-300">2021 - 2025</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 dark:bg-gray-900 text-white py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-4 md:mb-0">
+          <p>&copy; 2025 Mohammad Ismail. All rights reserved.</p>
+        </div>
+        <div class="flex space-x-6">
+          <a href="mailto:mi4154041@gmail.com" class="hover:text-gray-300 transition-all">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a href="https://github.com/MohammadIsmail11" target="_blank" class="hover:text-gray-300 transition-all">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://linkedin.com/in/mohammad-ismail-ab9894304" target="_blank" class="hover:text-gray-300 transition-all">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="tel:+923209152850" class="hover:text-gray-300 transition-all">
+            <i class="fas fa-phone"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const mobileMenuButton = document.querySelector('.mobile-menu-button');
+    const mobileMenu = document.querySelector('.mobile-menu');
+
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Update theme toggle icons based on current theme
+    function updateThemeToggle() {
+      const darkIcon = document.getElementById('theme-toggle-dark');
+      const lightIcon = document.getElementById('theme-toggle-light');
+
+      if (document.documentElement.classList.contains('dark')) {
+        darkIcon.classList.remove('hidden');
+        lightIcon.classList.add('hidden');
+      } else {
+        darkIcon.classList.add('hidden');
+        lightIcon.classList.remove('hidden');
+      }
+    }
+
+    // Initialize theme toggle
+    updateThemeToggle();
+
+    // Add event listener for theme changes
+    const observer = new MutationObserver(updateThemeToggle);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+  </script>
+</body>
+</html>
