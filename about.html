@@ -6,200 +6,240 @@
   <title>About Me - Mohammad Ismail</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <script>
-    function toggleTheme() {
-      document.documentElement.classList.toggle('dark');
-      localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-    }
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark');
-    }
-  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
   <style>
-    .transition-all {
-      transition-property: all;
-      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-      transition-duration: 300ms;
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    body {
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
     }
     .bg-gradient {
-      background: linear-gradient(135deg, #6B73FF 0%, #000DFF 100%);
-    }
-    .dark .bg-gradient {
-      background: linear-gradient(135deg, #3a41b3 0%, #000a9f 100%);
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     }
     .skill-card {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      transform: translateZ(0);
+      backface-visibility: hidden;
     }
     .skill-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
     }
-    .dark .skill-card:hover {
-      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    .nav-link {
+      position: relative;
+      display: inline-block;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      background-color: #667eea;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after {
+      width: 100%;
     }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 font-sans">
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
   <!-- Navigation -->
-  <nav class="bg-gradient text-white shadow-lg">
+  <nav class="fixed top-0 w-full bg-white dark:bg-gray-800 shadow-lg z-50">
     <div class="max-w-6xl mx-auto px-4">
-      <div class="flex justify-between">
-        <div class="flex space-x-4">
-          <div>
-            <a href="index.html" class="flex items-center py-5 px-2 text-white hover:text-gray-200">
-              <svg class="w-6 h-6 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-              <span class="font-bold">Portfolio</span>
-            </a>
-          </div>
-          <div class="hidden md:flex items-center space-x-1">
-            <a href="index.html" class="py-5 px-3 font-medium hover:text-gray-200 transition-all">Home</a>
-            <a href="about.html" class="py-5 px-3 font-medium font-bold underline">About</a>
-            <a href="projects.html" class="py-5 px-3 font-medium hover:text-gray-200 transition-all">Projects</a>
-            <a href="contact.html" class="py-5 px-3 font-medium hover:text-gray-200 transition-all">Contact</a>
-          </div>
+      <div class="flex justify-between items-center py-4">
+        <div class="flex items-center">
+          <a href="index.html" class="flex items-center text-2xl font-bold text-gray-800 dark:text-white">
+            <i class="fas fa-code mr-2 text-blue-500"></i> Ismail
+          </a>
+        </div>
+        <div class="hidden md:flex space-x-8">
+          <a href="index.html" class="nav-link text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400">Home</a>
+          <a href="about.html" class="nav-link text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 font-bold underline">About</a>
+          <a href="projects.html" class="nav-link text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400">Projects</a>
+          <a href="contact.html" class="nav-link text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400">Contact</a>
         </div>
         <div class="flex items-center">
-          <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-white hover:bg-opacity-20 transition-all">
-            <svg id="theme-toggle-dark" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-            <svg id="theme-toggle-light" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"></path></svg>
+          <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-all">
+            <i class="fas fa-moon text-gray-600 dark:text-gray-300"></i>
           </button>
-          <div class="md:hidden flex items-center">
-            <button class="mobile-menu-button p-2 focus:outline-none">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+          <div class="md:hidden ml-4">
+            <button id="mobile-menu-button" class="p-2 focus:outline-none">
+              <i class="fas fa-bars text-gray-600 dark:text-gray-300"></i>
             </button>
           </div>
         </div>
       </div>
     </div>
-    <div class="mobile-menu hidden md:hidden">
-      <a href="index.html" class="block py-2 px-4 text-sm hover:bg-white hover:bg-opacity-20 transition-all">Home</a>
-      <a href="about.html" class="block py-2 px-4 text-sm hover:bg-white hover:bg-opacity-20 transition-all">About</a>
-      <a href="projects.html" class="block py-2 px-4 text-sm hover:bg-white hover:bg-opacity-20 transition-all">Projects</a>
-      <a href="contact.html" class="block py-2 px-4 text-sm hover:bg-white hover:bg-opacity-20 transition-all">Contact</a>
+    <div id="mobile-menu" class="mobile-menu hidden md:hidden bg-white dark:bg-gray-800 shadow-lg">
+      <a href="index.html" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 transition-all">Home</a>
+      <a href="about.html" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 transition-all">About</a>
+      <a href="projects.html" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 transition-all">Projects</a>
+      <a href="contact.html" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 transition-all">Contact</a>
     </div>
   </nav>
 
   <!-- About Section -->
-  <section class="max-w-6xl mx-auto px-4 py-16">
+  <section class="max-w-6xl mx-auto px-4 py-20 pt-28">
     <div class="flex flex-col md:flex-row items-center">
       <div class="md:w-1/2 mb-8 md:mb-0">
-        <img src="Screenshot 2025-06-27 150055.png" alt="Mohammad Ismail" class="rounded-lg shadow-lg w-full max-w-sm mx-auto">
+        <img src="https://via.placeholder.com/400x400" alt="Mohammad Ismail" class="rounded-lg shadow-2xl w-full max-w-sm mx-auto transform hover:scale-105 transition-all">
       </div>
       <div class="md:w-1/2 md:pl-12">
-        <h1 class="text-4xl font-bold mb-6">About Me</h1>
-        <p class="text-lg mb-4">
-          I'm <strong>Mohammad Ismail</strong>, a final-year Software Engineering student at Riphah International University, passionate about building full-stack web applications using modern technologies. I have experience in both frontend and backend development and am always eager to learn and contribute to meaningful software projects.
+        <h1 class="text-4xl font-bold mb-6 text-gray-800 dark:text-white">About Me</h1>
+        <p class="text-lg mb-4 text-gray-600 dark:text-gray-300">
+          I'm <strong>Mohammad Ismail</strong>, a passionate Software Engineer with a strong foundation in full-stack web development and Android development. I have a Bachelor's degree in Software Engineering from Riphah International University and 1 year of professional experience as an App Developer at Treesol Technologies.
         </p>
-        <p class="text-lg mb-6">
-          My journey in programming started with simple HTML pages and has evolved to creating complex web applications using frameworks like Node.js and Express.js for the backend and various frontend technologies.
+        <p class="text-lg mb-6 text-gray-600 dark:text-gray-300">
+          My journey in programming started with simple HTML pages and has evolved to creating complex web and mobile applications using modern frameworks and technologies. I am always eager to learn and contribute to meaningful software projects.
         </p>
       </div>
     </div>
   </section>
 
   <!-- Skills Section -->
-  <section class="max-w-6xl mx-auto px-4 py-16 bg-gray-100 dark:bg-gray-800">
-    <h2 class="text-3xl font-bold text-center mb-12">My Skills</h2>
+  <section class="max-w-6xl mx-auto px-4 py-20 bg-gray-100 dark:bg-gray-800">
+    <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white">My Skills</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       <!-- Skill 1 -->
-      <div class="skill-card bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md p-6">
+      <div class="skill-card bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-md p-6">
         <div class="flex items-center mb-4">
           <i class="fas fa-code text-blue-500 mr-3 text-2xl"></i>
-          <h3 class="text-xl font-bold">Frontend Development</h3>
+          <h3 class="text-xl font-bold text-gray-800 dark:text-white">Frontend Development</h3>
         </div>
-        <p class="text-gray-700 dark:text-gray-300">
+        <p class="text-gray-600 dark:text-gray-300">
           Experienced in building responsive and interactive user interfaces using modern frontend technologies.
         </p>
         <div class="flex flex-wrap gap-2 mt-4">
-          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">HTML</span>
-          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">CSS</span>
-          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">JavaScript</span>
-          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">tailwind</span>
+          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-3 py-1 rounded-full">React.js</span>
+          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-3 py-1 rounded-full">HTML</span>
+          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-3 py-1 rounded-full">CSS</span>
+          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-3 py-1 rounded-full">Bootstrap</span>
+          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-3 py-1 rounded-full">Tailwind</span>
         </div>
       </div>
 
       <!-- Skill 2 -->
-      <div class="skill-card bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md p-6">
+      <div class="skill-card bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-md p-6">
         <div class="flex items-center mb-4">
           <i class="fas fa-server text-blue-500 mr-3 text-2xl"></i>
-          <h3 class="text-xl font-bold">Backend Development</h3>
+          <h3 class="text-xl font-bold text-gray-800 dark:text-white">Backend Development</h3>
         </div>
-        <p class="text-gray-700 dark:text-gray-300">
+        <p class="text-gray-600 dark:text-gray-300">
           Proficient in developing server-side logic and APIs to support frontend applications and ensure seamless data flow.
         </p>
         <div class="flex flex-wrap gap-2 mt-4">
-          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">Node.js</span>
-          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">Express.js</span>
-          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">PHP</span>
+          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-3 py-1 rounded-full">Node.js</span>
+          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-3 py-1 rounded-full">Express.js</span>
+          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-3 py-1 rounded-full">PHP</span>
         </div>
       </div>
 
       <!-- Skill 3 -->
-      <div class="skill-card bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md p-6">
+      <div class="skill-card bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-md p-6">
         <div class="flex items-center mb-4">
           <i class="fas fa-database text-blue-500 mr-3 text-2xl"></i>
-          <h3 class="text-xl font-bold">Databases</h3>
+          <h3 class="text-xl font-bold text-gray-800 dark:text-white">Databases</h3>
         </div>
-        <p class="text-gray-700 dark:text-gray-300">
+        <p class="text-gray-600 dark:text-gray-300">
           Skilled in designing and managing databases to ensure efficient data storage and retrieval.
         </p>
         <div class="flex flex-wrap gap-2 mt-4">
-          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">SQL</span>
-          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">MySQL</span>
-          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">MongoDB</span>
+          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-3 py-1 rounded-full">MySQL</span>
+          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-3 py-1 rounded-full">MongoDB</span>
+          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-3 py-1 rounded-full">SQL</span>
         </div>
       </div>
 
       <!-- Skill 4 -->
-      <div class="skill-card bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md p-6">
+      <div class="skill-card bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-md p-6">
         <div class="flex items-center mb-4">
           <i class="fas fa-tools text-blue-500 mr-3 text-2xl"></i>
-          <h3 class="text-xl font-bold">Tools & Technologies</h3>
+          <h3 class="text-xl font-bold text-gray-800 dark:text-white">Tools & Technologies</h3>
         </div>
-        <p class="text-gray-700 dark:text-gray-300">
+        <p class="text-gray-600 dark:text-gray-300">
           Familiar with various tools and technologies that aid in the development and deployment of software applications.
         </p>
         <div class="flex flex-wrap gap-2 mt-4">
-          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">Git</span>
-          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">GitHub</span>
-          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">Postman</span>
+          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-3 py-1 rounded-full">Git</span>
+          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-3 py-1 rounded-full">GitHub</span>
+          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-3 py-1 rounded-full">Postman</span>
+          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-3 py-1 rounded-full">AWS</span>
+          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-3 py-1 rounded-full">EC2</span>
         </div>
       </div>
 
       <!-- Skill 5 -->
-      <div class="skill-card bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md p-6">
+      <div class="skill-card bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-md p-6">
         <div class="flex items-center mb-4">
           <i class="fas fa-mobile-alt text-blue-500 mr-3 text-2xl"></i>
-          <h3 class="text-xl font-bold">Mobile Development</h3>
+          <h3 class="text-xl font-bold text-gray-800 dark:text-white">Mobile Development</h3>
         </div>
-        <p class="text-gray-700 dark:text-gray-300">
-          Experience in developing mobile applications for Android using Kotlin.
+        <p class="text-gray-600 dark:text-gray-300">
+          Experience in developing mobile applications for Android using Flutter and Kotlin.
         </p>
         <div class="flex flex-wrap gap-2 mt-4">
-          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">Kotlin</span>
-          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">Android</span>
+          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-3 py-1 rounded-full">Flutter</span>
+          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-3 py-1 rounded-full">Kotlin</span>
+          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-3 py-1 rounded-full">Firebase</span>
         </div>
       </div>
+    </div>
+  </section>
 
-      
+  <!-- Experience Section -->
+  <section class="max-w-6xl mx-auto px-4 py-20">
+    <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white">Work Experience</h2>
+    <div class="flex flex-col items-center">
+      <div class="bg-white dark:bg-gray-700 rounded-xl shadow-md p-6 mb-6 w-full max-w-2xl">
+        <div class="flex items-center mb-4">
+          <div class="bg-blue-100 dark:bg-blue-900 p-3 rounded-lg mr-4">
+            <i class="fas fa-briefcase text-blue-600 dark:text-blue-300 text-2xl"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-gray-800 dark:text-white">App Developer</h3>
+            <p class="text-gray-600 dark:text-gray-300">Treesol Technologies</p>
+          </div>
+        </div>
+        <p class="text-gray-600 dark:text-gray-300 mb-2">2025 - 2026</p>
+        <ul class="list-disc pl-6 text-gray-600 dark:text-gray-300">
+          <li>Designed a user-friendly UI for a car oil change app.</li>
+          <li>Customers and partners can register via OTP verification using Node.js and Render.</li>
+          <li>Customers can request services, partners submit offers, and a chat system is enabled.</li>
+          <li>Deployed Billing System on AWS using EC2, Putty, and FileZilla.</li>
+        </ul>
+      </div>
     </div>
   </section>
 
   <!-- Education Section -->
-  <section class="max-w-6xl mx-auto px-4 py-16">
-    <h2 class="text-3xl font-bold text-center mb-12">Education</h2>
+  <section class="max-w-6xl mx-auto px-4 py-20">
+    <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white">Education</h2>
     <div class="flex flex-col items-center">
-      <div class="bg-white dark:bg-gray-700 rounded-lg shadow-md p-6 mb-6 w-full max-w-2xl">
+      <div class="bg-white dark:bg-gray-700 rounded-xl shadow-md p-6 mb-6 w-full max-w-2xl">
         <div class="flex items-center mb-4">
           <div class="bg-blue-100 dark:bg-blue-900 p-3 rounded-lg mr-4">
             <i class="fas fa-graduation-cap text-blue-600 dark:text-blue-300 text-2xl"></i>
           </div>
           <div>
-            <h3 class="text-xl font-bold">Riphah International University</h3>
+            <h3 class="text-xl font-bold text-gray-800 dark:text-white">Riphah International University</h3>
             <p class="text-gray-600 dark:text-gray-300">Bachelor of Software Engineering</p>
           </div>
         </div>
-        <p class="text-gray-700 dark:text-gray-300">2021 - 2025</p>
+        <p class="text-gray-600 dark:text-gray-300">2021 - 2025</p>
+      </div>
+      <div class="bg-white dark:bg-gray-700 rounded-xl shadow-md p-6 mb-6 w-full max-w-2xl">
+        <div class="flex items-center mb-4">
+          <div class="bg-blue-100 dark:bg-blue-900 p-3 rounded-lg mr-4">
+            <i class="fas fa-school text-blue-600 dark:text-blue-300 text-2xl"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-gray-800 dark:text-white">Base College Wah Cantt</h3>
+            <p class="text-gray-600 dark:text-gray-300">FSC (Pre-Engineering)</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -209,13 +249,13 @@
     <div class="max-w-6xl mx-auto px-4">
       <div class="flex flex-col md:flex-row justify-between items-center">
         <div class="mb-4 md:mb-0">
-          <p>&copy; 2025 Mohammad Ismail. All rights reserved.</p>
+          <p>&copy; 2026 Mohammad Ismail. All rights reserved.</p>
         </div>
         <div class="flex space-x-6">
           <a href="mailto:mi4154041@gmail.com" class="hover:text-gray-300 transition-all">
             <i class="fas fa-envelope"></i>
           </a>
-          <a href="https://github.com/MohammadIsmail11" target="_blank" class="hover:text-gray-300 transition-all">
+          <a href="https://github.com/ismail0991" target="_blank" class="hover:text-gray-300 transition-all">
             <i class="fab fa-github"></i>
           </a>
           <a href="https://linkedin.com/in/mohammad-ismail-ab9894304" target="_blank" class="hover:text-gray-300 transition-all">
@@ -230,36 +270,80 @@
   </footer>
 
   <script>
-    // Mobile menu toggle
-    const mobileMenuButton = document.querySelector('.mobile-menu-button');
-    const mobileMenu = document.querySelector('.mobile-menu');
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mobile menu toggle
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
 
-    mobileMenuButton.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
+      mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
 
-    // Update theme toggle icons based on current theme
-    function updateThemeToggle() {
-      const darkIcon = document.getElementById('theme-toggle-dark');
-      const lightIcon = document.getElementById('theme-toggle-light');
+      // Theme toggle
+      const themeToggle = document.getElementById('theme-toggle');
+      const darkIcon = '<i class="fas fa-sun text-gray-600 dark:text-gray-300"></i>';
+      const lightIcon = '<i class="fas fa-moon text-gray-600 dark:text-gray-300"></i>';
 
-      if (document.documentElement.classList.contains('dark')) {
-        darkIcon.classList.remove('hidden');
-        lightIcon.classList.add('hidden');
+      themeToggle.addEventListener('click', () => {
+        document.documentElement.classList.toggle('dark');
+        if (document.documentElement.classList.contains('dark')) {
+          themeToggle.innerHTML = darkIcon;
+          localStorage.setItem('theme', 'dark');
+        } else {
+          themeToggle.innerHTML = lightIcon;
+          localStorage.setItem('theme', 'light');
+        }
+      });
+
+      // Check for saved theme preference
+      if (localStorage.getItem('theme') === 'dark') {
+        document.documentElement.classList.add('dark');
+        themeToggle.innerHTML = darkIcon;
       } else {
-        darkIcon.classList.add('hidden');
-        lightIcon.classList.remove('hidden');
+        themeToggle.innerHTML = lightIcon;
       }
-    }
 
-    // Initialize theme toggle
-    updateThemeToggle();
+      // GSAP Animations
+      gsap.registerPlugin(ScrollTrigger);
 
-    // Add event listener for theme changes
-    const observer = new MutationObserver(updateThemeToggle);
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['class']
+      // Animate About Me section
+      gsap.from(".max-w-6xl mx-auto px-4 py-20 pt-28 h1", {
+        scrollTrigger: {
+          trigger: ".max-w-6xl mx-auto px-4 py-20 pt-28",
+          start: "top 80%",
+        },
+        y: 50,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out",
+      });
+      gsap.from(".max-w-6xl mx-auto px-4 py-20 pt-28 p", {
+        scrollTrigger: {
+          trigger: ".max-w-6xl mx-auto px-4 py-20 pt-28",
+          start: "top 80%",
+        },
+        y: 30,
+        opacity: 0,
+        duration: 1,
+        delay: 0.2,
+        ease: "power3.out",
+      });
+
+      // Animate skill cards
+      gsap.utils.toArray(".skill-card").forEach((card, i) => {
+        gsap.from(card, {
+          scrollTrigger: {
+            trigger: card,
+            start: "top 80%",
+            toggleActions: "play none none none"
+          },
+          y: 50,
+          opacity: 0,
+          duration: 0.5,
+          delay: i * 0.1,
+          ease: "back.out(1.7)"
+        });
+      });
     });
   </script>
 </body>
